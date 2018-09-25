@@ -1,0 +1,33 @@
+# R files 
+.Rhistory
+.Rapp.history
+.Ruserdata
+.RData
+/*.tar.gz
+/*.Rcheck/
+.Rproj.user
+.Rproj.user/
+vignettes/*.html
+vignettes/*.pdf
+
+# R markdown files
+/*_cache/
+/cache/
+*.utf8.md
+*.knit.md
+
+# TeX files
+.pdf
+.log
+.dvi
+.aux
+.toc
+.synctex.gz
+## BibTeX
+.bbl
+.blg
+## beamer
+.snm
+.nav
+## hyperref
+.out
