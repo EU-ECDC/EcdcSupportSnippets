@@ -1,10 +1,20 @@
 Package: EcdcSupportSnippets
-Title: What the Package Does (one line, title case)
+Title: ECDC Package
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-Depends: R (>= 3.5.0),
-         Rdpack
+Authors@R: c(person("European Centre for Disease Prevention and Control (ECDC)", role = c("aut", "cre", "cph")))
+Description: Various convenience functions for R.
+Depends: 
+  R (>= 3.5.0),
+  Rdpack
+RdMacros: Rdpack
+Imports: 
+  Rdpack
+Depends: 
+  R (>= 3.5.0)
+Suggests:
+  testthat,
+  rmarkdown,
+  knitr
 License: EUPL
 Encoding: UTF-8
 LazyData: true
