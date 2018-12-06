@@ -15,21 +15,17 @@ save_plot <- function(fig, filename = "Rplot%03d",
         width = width * 100, height = height * 100)
     print(fig)
     dev.off()
-  # PNG
-  if("png" %in% types)
-    png(filename = here(paste0(location, filename, ".png")),
-        width = width * 100, height = height * 100)
+  # EPS
+  if("eps" %in% types)
+    setEPS()
+    postscript(file = here(paste0(location, filename, ".eps")),
+               width = width, height = height,
+               horizontal = FALSE, onefile = FALSE, paper = "special")
     print(fig)
     dev.off()
   # JPEG
   if("jpeg" %in% types | "jpg" %in% types)
     jpeg(filename = here(paste0(location, filename, ".jpg")),
-         width = width * 100, height = height * 100)
-    print(fig)
-    dev.off()
-  # TIFF
-  if("tiff" %in% types | "tif" %in% types)
-    tiff(filename = here(paste0(location, filename, ".tif")),
          width = width * 100, height = height * 100)
     print(fig)
     dev.off()
@@ -39,8 +35,46 @@ save_plot <- function(fig, filename = "Rplot%03d",
         width = width, height = height)
     print(fig)
     dev.off()
+  # PNG
+  if("png" %in% types)
+    png(filename = here(paste0(location, filename, ".png")),
+        width = width * 100, height = height * 100)
+    print(fig)
+    dev.off()
+  # PS
+  if("ps" %in% types)
+    postscript(file = here(paste0(location, filename, ".ps")),
+               width = width, height = height)
+    print(fig)
+    dev.off()
+  # SVG
+  if("svg" %in% types)
+    svg(filename = here(paste0(location, filename, ".svg")),
+        width = width, height = height)
+    print(fig)
+    dev.off()
+  # TIFF
+  if("tiff" %in% types | "tif" %in% types)
+    tiff(filename = here(paste0(location, filename, ".tif")),
+         width = width * 100, height = height * 100)
+    print(fig)
+    dev.off()
+  # WMF
+  if("wmf" %in% types)
+    win.metafile(filename = here(paste0(location, filename, ".wmf")),
+                 width = width, height = height)
+    print(fig)
+    dev.off()
 }
   
-# test
-p <- ggplot2::qplot(c(1, 2, 3, 4))
-save_plot(fig = p)
+# Tests
+p <- ggplot2::qplot(c(1,2,3,4))
+eurosurveillance_types <- c("pdf", "eps", "wmf", "emf", "svg")
+save_plot(fig = p, filename = "test", types = eurosurveillance_types)
+
+full_types <- c("bmp", "eps", "jpeg", "pdf", "png", "ps", "svg",
+                "tiff", "wmf")
+save_plot(fig = p, types = full_types)
+
+# TODO Consider use of cairo_pdf and cairo_ps
+# TODO Consider Eurosurviellance-ready formats as default outputs
