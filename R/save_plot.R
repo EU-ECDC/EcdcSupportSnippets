@@ -1,5 +1,22 @@
-library(here)
-
+#' Save plots in various formats
+#' 
+#' This is a wrapper for the outputs from grDevices saving plots in all manner of
+#' formats.
+#' 
+#' @param fig plot
+#' @param filename name of plot
+#' @param location location plot saves to (defaults to subfolder called Figures)
+#' @param width width of figure defaults to 4.8 (corresponding to 480px
+#' for those exports which have default units px)
+#' @param height height of figure defaults to 4.8 (corresponding to 480px
+#' for those exports which have default units px)
+#' @param types output formats
+#' @export
+#' @importFrom here here
+#' @examples
+#' p <- ggplot2::qplot(c(1, 2, 3, 4))
+#' eurosurveillance_types <- c("pdf", "eps", "wmf", "emf", "svg")
+#' save_plot(fig = p, filename = "test", types = eurosurveillance_types)
 save_plot <- function(fig, filename = "Rplot%03d",
                       location = "Figures/",
                       width = 4.8, height = 4.8,
@@ -53,6 +70,12 @@ save_plot <- function(fig, filename = "Rplot%03d",
         width = width, height = height)
     print(fig)
     dev.off()
+  # TEX
+  if("tex" %in% types)
+    pictex(file = here(paste0(location, filename, ".tex")),
+           width = width, height = height)
+    print(fig)
+    dev.off()
   # TIFF
   if("tiff" %in% types | "tif" %in% types)
     tiff(filename = here(paste0(location, filename, ".tif")),
@@ -67,14 +90,7 @@ save_plot <- function(fig, filename = "Rplot%03d",
     dev.off()
 }
   
-# Tests
-p <- ggplot2::qplot(c(1,2,3,4))
-eurosurveillance_types <- c("pdf", "eps", "wmf", "emf", "svg")
-save_plot(fig = p, filename = "test", types = eurosurveillance_types)
-
-full_types <- c("bmp", "eps", "jpeg", "pdf", "png", "ps", "svg",
-                "tiff", "wmf")
-save_plot(fig = p, types = full_types)
-
 # TODO Consider use of cairo_pdf and cairo_ps
 # TODO Consider Eurosurviellance-ready formats as default outputs
+# TODO Add warnings
+# TODO Consider adding xfig
