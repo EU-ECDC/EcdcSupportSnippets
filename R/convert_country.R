@@ -1,7 +1,7 @@
 #' Convert country names
 #'
 #' This is a function allowing for the conversion of country names from one
-#' format to another. It uses the list of 31 EU/EEA countries.
+#' format to another.
 #'
 #' @param name Country name to be converted
 #' @param type Can take the values "full" and "ISO2"
