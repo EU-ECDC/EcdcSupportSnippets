@@ -94,3 +94,31 @@ save_plot <- function(fig, filename = "Rplot%03d",
 # TODO Consider Eurosurviellance-ready formats as default outputs
 # TODO Add warnings
 # TODO Consider adding xfig
+
+#' Save data in various formats
+#' 
+#' This is a wrapper for saving data to local machines.
+#' 
+#' @param obj object to be saved
+#' @param filename name of object
+#' @param location location object saves to (defaults to subfolder called Data)
+#' @param types output formats
+#' @export
+#' @importFrom here here
+#' @examples
+save_data <- function(obj, 
+                      filename = paste0("data", sprintf(fmt = "%03d", 1)),
+                      location = "Data/",
+                      types = c("rds", "csv")){
+  # Create Data folder if it does not already exist
+  ifelse(!dir.exists(here(location)),
+         dir.create(here(location)), FALSE)
+  # Inform user of location outputs are being saved to
+  message(paste0("Saving outputs to ", here(location)))
+  # RDS
+  if("rds" %in% types)
+    saveRDS(object = obj, file = here(paste0(location, filename, ".rds")))
+  # CSV
+  if("csv" %in% types)
+    write.csv(x = obj, file = here(paste0(location, filename, ".csv")))
+}
