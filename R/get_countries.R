@@ -1,4 +1,12 @@
-library(XML)
+#' Get countries from interinstitutional style guide
+#' 
+#' Get the list of countries from the Annexes from the Interinstitutional
+#' style guide and save countries for use with convert_country.
+#' 
+#' @export
+#' @importFrom XML htmlParse 
+#' @examples
+#' get_countries()
 
 get_countries <- function(){
   # All countries and codes
