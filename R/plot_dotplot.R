@@ -1,8 +1,15 @@
-# Load packages
-library(dplyr) # For working with data
-library(ggplot2) # For plotting
-
-# Get data from dotplot
+# Plot dotplot
+#'
+#' This is a function for plotting dotplots the right way round. It primarily uses
+#' [ggplot2::ggplot()] with a bit of [dplyr::inner_join()].
+#' 
+#' @param data Dataset to use, defaults to cars
+#' @param var Desired variable for plotting, defaults to "speed"
+#' @export
+#' @importFrom dplyr inner_join
+#' @importFrom ggplot2 ggplot
+#' @examples
+#' dotplot(data = cars, var = "speed")
 dotplot <- function(data = cars, var = "speed"){
   p <- ggplot2::ggplot(data = data,
                        mapping = aes(x = factor(get(var)))) +
