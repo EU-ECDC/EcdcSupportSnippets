@@ -1,4 +1,5 @@
 library(eurostat)
+library(dplyr)
 
 eurostat_dataset_and_info <- function(dataset = "aact_ali01"){
   out <- list()
