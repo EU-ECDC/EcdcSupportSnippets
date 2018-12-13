@@ -9,9 +9,9 @@ convert_country(name, type, ...)
 \arguments{
 \item{name}{Country name to be converted}
 
-\item{type}{Can take the values "full", "ISO2", and "ISO3"}
+\item{type}{Can take the values "full" and "ISO2"}
 }
 \description{
 This is a function allowing for the conversion of country names from one
-format to another. It uses the list of 31 EU/EEA countries.
+format to another.
 }

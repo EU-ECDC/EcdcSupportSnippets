@@ -12,8 +12,8 @@ createandview(filename, type = "html", ...)
 \item{file}{Name of the Rdfile}
 }
 \description{
-This is a wrapper that uses the \code{\link[devtools:document]{devtools::document()}} function to create the
-documentation, including Rd files, followed by the \code{\link[Rdpack:viewRd]{Rdpack::viewRd()}} function
+This is a wrapper that uses the [devtools::document()] function to create the
+documentation, including Rd files, followed by the [Rdpack::viewRd()] function
 to show the documentation for the specified file.
 It is intended for use when creating R packages.
 }

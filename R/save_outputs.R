@@ -105,7 +105,6 @@ save_plot <- function(fig, filename = "Rplot%03d",
 #' @param types output formats
 #' @export
 #' @importFrom here here
-#' @examples
 save_data <- function(obj, 
                       filename = paste0("data", sprintf(fmt = "%03d", 1)),
                       location = "Data/",
