@@ -8,4 +8,4 @@
 <!--- Provide a description of how the proposed change benefits other users -->
 
 ## Possible implementation
-<!--- If possible, provide an idea for how to implementat the proposed change -->
+<!--- If possible, provide an idea for how to implement the proposed change -->
