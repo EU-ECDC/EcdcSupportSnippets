@@ -6,7 +6,7 @@
 #' @param name Country name to be converted
 #' @param type Can take the values "full" and "ISO2"
 #' @export
-#'
+#' @seealso [get_countries()]
 convert_country <- function(name, type, ...){
   if(!(type %in% c("full", "ISO2")))
     stop("incorrect type argument")

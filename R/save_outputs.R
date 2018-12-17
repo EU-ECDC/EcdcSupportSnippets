@@ -17,6 +17,7 @@
 #' p <- ggplot2::qplot(c(1, 2, 3, 4))
 #' eurosurveillance_types <- c("pdf", "eps", "wmf", "emf", "svg")
 #' save_plot(fig = p, filename = "test", types = eurosurveillance_types)
+#' @seealso [save_data()]
 save_plot <- function(fig, filename = "Rplot%03d",
                       location = "Figures/",
                       width = 4.8, height = 4.8,
@@ -100,6 +101,7 @@ save_plot <- function(fig, filename = "Rplot%03d",
 #' @param types output formats
 #' @export
 #' @importFrom here here
+#' @seealso [save_plot()]
 save_data <- function(obj, 
                       filename = paste0("data", sprintf(fmt = "%03d", 1)),
                       location = "Data/",

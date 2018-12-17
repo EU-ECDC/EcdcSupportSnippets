@@ -9,6 +9,7 @@
 #' @import dplyr
 #' @examples
 #' data_and_info()
+#' @seealso [list_all_sets() least_missings()]
 data_and_info <- function(dataset = "aact_ali01", ...){
   out <- list()
   out$data <- get_eurostat(id = dataset)
@@ -28,6 +29,7 @@ data_and_info <- function(dataset = "aact_ali01", ...){
 #' @import dplyr 
 #' @examples
 #' list_all_sets()
+#' @seealso [data_and_info() least_missings()]
 list_all_sets <- function(){
   print(search_eurostat("*", fixed = FALSE) %>% 
           select(title, code) %>%
@@ -43,6 +45,7 @@ list_all_sets <- function(){
 #' @import dplyr
 #' @examples
 #' least_missings()
+#' @seealso [data_and_info() list_all_sets()]
 least_missings <- function(dataset = "ilc_lvho05a", ...){
   eur <- data_and_info(dataset = dataset)
   data <- eur$data

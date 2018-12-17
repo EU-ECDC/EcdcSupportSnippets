@@ -7,7 +7,7 @@
 #' @importFrom XML htmlParse 
 #' @examples
 #' get_countries()
-
+#' @seealso [convert_country()]
 get_countries <- function(){
   # All countries and codes
   annexA6 <- htmlParse("http://publications.europa.eu/code/en/en-5000600.htm")
