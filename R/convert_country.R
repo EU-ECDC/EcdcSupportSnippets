@@ -30,6 +30,3 @@ convert_country <- function(name, type, ...){
 
     return(out)
 }
-
-#TODO: Make inputs and first column of countries uppercase so user input errors
-# avoided

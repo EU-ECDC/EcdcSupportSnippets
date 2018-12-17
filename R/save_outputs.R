@@ -90,11 +90,6 @@ save_plot <- function(fig, filename = "Rplot%03d",
     dev.off()
 }
   
-# TODO Consider use of cairo_pdf and cairo_ps
-# TODO Consider Eurosurviellance-ready formats as default outputs
-# TODO Add warnings
-# TODO Consider adding xfig
-
 #' Save data in various formats
 #' 
 #' This is a wrapper for saving data to local machines.

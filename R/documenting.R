@@ -11,10 +11,8 @@
 #' @importFrom devtools document
 #' @importFrom Rdpack viewRd
 #' @examples
-#' createandview("my_function_name.Rd")
-createandview <- function(filename, type = "html", ...){
+#' create_and_view("my_function_name.Rd")
+create_and_view <- function(filename, type = "html", ...){
   document()
   viewRd(paste0("./man/", filename), type)
 }
-
-#TODO: Allow for multiple files given by c("file1", "file2")

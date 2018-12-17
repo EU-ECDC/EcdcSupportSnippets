@@ -71,5 +71,3 @@ least_missings <- function(dataset = "ilc_lvho05a", ...){
               data = data)
   return(out)
 }
-# TODO: Consider option for outputint plot object from visdat
-# TODO: Replace the loop with something faster
