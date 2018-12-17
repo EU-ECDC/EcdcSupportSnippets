@@ -19,3 +19,6 @@ save_data(obj, filename = paste0("data", sprintf(fmt = "\%03d", 1)),
 \description{
 This is a wrapper for saving data to local machines.
 }
+\seealso{
+[save_plot()]
+}

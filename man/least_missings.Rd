@@ -15,3 +15,6 @@ Find dataset from year with least missings
 \examples{
 least_missings()
 }
+\seealso{
+[data_and_info() list_all_sets()]
+}

@@ -32,3 +32,6 @@ p <- ggplot2::qplot(c(1, 2, 3, 4))
 eurosurveillance_types <- c("pdf", "eps", "wmf", "emf", "svg")
 save_plot(fig = p, filename = "test", types = eurosurveillance_types)
 }
+\seealso{
+[save_data()]
+}

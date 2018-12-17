@@ -16,3 +16,6 @@ list of available data sets
 \examples{
 list_all_sets()
 }
+\seealso{
+[data_and_info() least_missings()]
+}

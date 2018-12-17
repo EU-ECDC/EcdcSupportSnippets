@@ -15,3 +15,6 @@ convert_country(name, type, ...)
 This is a function allowing for the conversion of country names from one
 format to another.
 }
+\seealso{
+[get_countries()]
+}

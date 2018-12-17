@@ -13,3 +13,6 @@ style guide and save countries for use with convert_country.
 \examples{
 get_countries()
 }
+\seealso{
+[convert_country()]
+}
