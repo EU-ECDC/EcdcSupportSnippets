@@ -9,7 +9,7 @@
 #' @import dplyr
 #' @examples
 #' data_and_info()
-#' @seealso [list_all_sets() least_missings()]
+#' @seealso [list_all_sets() least_missings() codes_and_labels()]
 data_and_info <- function(dataset = "aact_ali01", ...){
   out <- list()
   out$data <- get_eurostat(id = dataset)
@@ -29,7 +29,7 @@ data_and_info <- function(dataset = "aact_ali01", ...){
 #' @import dplyr 
 #' @examples
 #' list_all_sets()
-#' @seealso [data_and_info() least_missings()]
+#' @seealso [data_and_info() least_missings() codes_and_labels()]
 list_all_sets <- function(){
   print(search_eurostat("*", fixed = FALSE) %>% 
           select(title, code) %>%
@@ -45,7 +45,7 @@ list_all_sets <- function(){
 #' @import dplyr
 #' @examples
 #' least_missings()
-#' @seealso [data_and_info() list_all_sets()]
+#' @seealso [data_and_info() list_all_sets() codes_and_labels()]
 least_missings <- function(dataset = "ilc_lvho05a", ...){
   eur <- data_and_info(dataset = dataset)
   data <- eur$data
@@ -74,3 +74,25 @@ least_missings <- function(dataset = "ilc_lvho05a", ...){
               data = data)
   return(out)
 }
+
+#' Get codes and labels
+#' 
+#' This is a wrapper for the Eurostat package which retrieves both the codes and
+#' labels for a data set (helps with lookups for filtering on codes)
+#' 
+#' @param dataset code of Eurostat dataset to retrieve
+#' @export
+#' @importFrom eurostat get_eurostat 
+#' @import dplyr
+#' @examples
+#' data_and_info()
+#' @seealso [data_and_info() list_all_sets() least_missings()]
+codes_and_labels <- function(dataset = "hlth_sha11_hc", ...){
+  bind_cols(
+    get_eurostat(id = dataset, type = "code") %>%
+      select(-time, -values, -geo),
+    get_eurostat(id = dataset, type = "label") %>%
+      select(-time, -values, -geo)) %>%
+    distinct()
+}
+
