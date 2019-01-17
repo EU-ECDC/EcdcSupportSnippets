@@ -13,6 +13,9 @@
 #' @param types output formats
 #' @export
 #' @importFrom here here
+#' @import dplyr
+#' @import rvg
+#' @import officer
 #' @examples
 #' p <- ggplot2::qplot(c(1, 2, 3, 4))
 #' eurosurveillance_types <- c("pdf", "eps", "wmf", "emf", "svg")
@@ -21,7 +24,7 @@
 save_plot <- function(fig, filename = "Rplot%03d",
                       location = "Figures/",
                       width = 4.8, height = 4.8,
-                      types = c("bmp", "png", "jpeg", "tiff", "pdf")){
+                      types = c("bmp", "png", "jpeg", "tiff", "pdf", ...)){
   # Create Figures folder if it does not already exist
   ifelse(!dir.exists(here(location)),
          dir.create(here(location)), FALSE)
@@ -59,6 +62,13 @@ save_plot <- function(fig, filename = "Rplot%03d",
         width = width * 100, height = height * 100)
     print(fig)
     dev.off()
+  # PPT
+  if("ppt" %in% types)
+    doc <- read_pptx() %>%
+      add_slide(layout = "Title and Content", master = "Office Theme") %>%
+      ph_with_vg_at(code = print(fig), left = 1, top = 2, width = 6, height = 4)
+    print(doc, target = here(paste0(location, filename, ".pptx")))
+    while(!is.null(dev.list())) dev.off()
   # PS
   if("ps" %in% types)
     postscript(file = here(paste0(location, filename, ".ps")),
