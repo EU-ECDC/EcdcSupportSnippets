@@ -66,7 +66,7 @@ save_plot <- function(fig, filename = "Rplot%03d",
   if("ppt" %in% types)
     doc <- read_pptx() %>%
       add_slide(layout = "Title and Content", master = "Office Theme") %>%
-      ph_with_vg_at(code = print(fig), left = 1, top = 2, width = 6, height = 4)
+      ph_with_vg_at(code = print(fig), left = 1, top = 2, width = width, height = height)
     print(doc, target = here(paste0(location, filename, ".pptx")))
     while(!is.null(dev.list())) dev.off()
   # PS
