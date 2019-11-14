@@ -1,7 +1,11 @@
 Package: EcdcSupportSnippets
 Title: ECDC Package
 Version: 0.0.0.9000
-Authors@R: c(person("European Centre for Disease Prevention and Control (ECDC)", role = c("aut", "cre", "cph")))
+Authors@R: c( 
+  person( given = "Maria", family = "Dunbar", 
+          role = c("aut", "ctr", "cre"), email = "maria.dunbar@ecdc.europa.eu"),
+  person( given = "Tommi", family = "Karki", 
+          role = c("aut", "fnd"), email = "tommi.karki@ecdc.europa.eu"))
 Description: Various convenience functions for R.
 Depends: 
   R (>= 3.5.0),
