@@ -31,3 +31,4 @@ vignettes/*.pdf
 .nav
 ## hyperref
 .out
+/.vs
