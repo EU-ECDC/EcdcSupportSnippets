@@ -31,74 +31,94 @@ save_plot <- function(fig, filename = "Rplot%03d",
   # Inform user of location plots are being saved to
   message(paste0("Saving plots to ", here(location)))
   # BMP
-  if("bmp" %in% types)
+  if("bmp" %in% types){
     bmp(filename = here(paste0(location, filename, ".bmp")),
         width = width * 100, height = height * 100)
+    if(is.null(fig))
+      fig
     print(fig)
-    dev.off()
+    dev.off()}
   # EPS
-  if("eps" %in% types)
+  if("eps" %in% types){
     setEPS()
     postscript(file = here(paste0(location, filename, ".eps")),
                width = width, height = height,
                horizontal = FALSE, onefile = FALSE, paper = "special")
+    if(is.null(fig))
+      fig
     print(fig)
-    dev.off()
+    dev.off()}
   # JPEG
-  if("jpeg" %in% types | "jpg" %in% types)
+  if("jpeg" %in% types | "jpg" %in% types){
     jpeg(filename = here(paste0(location, filename, ".jpg")),
          width = width * 100, height = height * 100)
+    if(is.null(fig))
+      fig
     print(fig)
-    dev.off()
+    dev.off()}
   # PDF
-  if("pdf" %in% types)
+  if("pdf" %in% types){
     pdf(file = here(paste0(location, filename, ".pdf")),
         width = width, height = height)
+    if(is.null(fig))
+      fig
     print(fig)
-    dev.off()
+    dev.off()}
   # PNG
-  if("png" %in% types)
+  if("png" %in% types){
     png(filename = here(paste0(location, filename, ".png")),
         width = width * 100, height = height * 100)
+    if(is.null(fig))
+      fig
     print(fig)
-    dev.off()
+    dev.off()}
   # PPT
-  if("ppt" %in% types)
+  if("ppt" %in% types){
     doc <- read_pptx() %>%
       add_slide(layout = "Title and Content", master = "Office Theme") %>%
       ph_with_vg_at(code = print(fig), left = 1, top = 2, width = width, height = height)
     print(doc, target = here(paste0(location, filename, ".pptx")))
-    while(!is.null(dev.list())) dev.off()
+    while(!is.null(dev.list())) dev.off()}
   # PS
-  if("ps" %in% types)
+  if("ps" %in% types){
     postscript(file = here(paste0(location, filename, ".ps")),
                width = width, height = height)
+    if(is.null(fig))
+      fig
     print(fig)
-    dev.off()
+    dev.off()}
   # SVG
-  if("svg" %in% types)
+  if("svg" %in% types){
     svg(filename = here(paste0(location, filename, ".svg")),
         width = width, height = height)
+    if(is.null(fig))
+      fig
     print(fig)
-    dev.off()
+    dev.off()}
   # TEX
-  if("tex" %in% types)
+  if("tex" %in% types){
     pictex(file = here(paste0(location, filename, ".tex")),
            width = width, height = height)
+    if(is.null(fig))
+      fig
     print(fig)
-    dev.off()
+    dev.off()}
   # TIFF
-  if("tiff" %in% types | "tif" %in% types)
+  if("tiff" %in% types | "tif" %in% types){
     tiff(filename = here(paste0(location, filename, ".tif")),
          width = width * 100, height = height * 100)
+    if(is.null(fig))
+      fig
     print(fig)
-    dev.off()
+    dev.off()}
   # WMF
-  if("wmf" %in% types)
+  if("wmf" %in% types){
     win.metafile(filename = here(paste0(location, filename, ".wmf")),
                  width = width, height = height)
+    if(is.null(fig))
+      fig
     print(fig)
-    dev.off()
+    dev.off()}
 }
   
 #' Save data in various formats
